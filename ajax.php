@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="User.css">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+<?php
+    include('topnavigation1.php');
+?>
+<div class="row">    
+    <aside class="col-md-2">
+        <div id="leftmenu">
+        <!-- <p><a>General Description</a><p> -->
+        <p><a href="istj_weakness.php">Strengths & Weaknesses</a><p>
+        <p><a href="istj_romantic.php">Romantic Relationships</a><p>
+        <p><a href="istj_career.php">Career Paths</a><p>
+        </div>
+    </aside>
+    <div id="rightmenu" class="col-md-9">
+        <div class="personalitycover">
+            <img src="img/ISTJ.svg">
+            <h1><center>ISTJ Personality (“The Logistician”)</center></h1>
+            <blockquote>
+                <p><i>My observation is that whenever one person is found adequate to the discharge of a duty... it is worse executed by two persons, and scarcely done at all if three or more are employed therein.</i></p>
+                <footer>George Washington</footer>
+            </blockquote>
+        </div>
+        <div class="personalityinfo">
+            <p>The ISTJ personality type is thought to be the most abundant, making up around 13% of the population. Their defining characteristics of integrity, practical logic and tireless dedication to duty make ISTJs a vital core to many families, as well as organizations that uphold traditions, rules and standards, such as law offices, regulatory bodies and military. People with the ISTJ personality type enjoy taking responsibility for their actions, and take pride in the work they do – when working towards a goal, ISTJs hold back none of their time and energy completing each relevant task with accuracy and patience.</p>
+            <div class="scene">
+                <img alt="ISTJ personality" src="img/ISTJ2.svg" alt="ISTJ personality">
+            </div>
+            <br>
+            <p>ISTJs don’t make many assumptions, preferring instead to analyze their surroundings, check their facts and arrive at practical courses of action. ISTJ personalities are no-nonsense, and when they’ve made a decision, they will relay the facts necessary to achieve their goal, expecting others to grasp the situation immediately and take action. ISTJs have little tolerance for indecisiveness, but lose patience even more quickly if their chosen course is challenged with impractical theories, especially if they ignore key details – if challenges becomes time-consuming debates, ISTJs can become noticeably angry as deadlines tick nearer.</p>
+            <h2>Associate With Those of Good Quality if You Esteem Your Reputation...</h2>
+            <p>When ISTJs say they are going to get something done, they do it, meeting their obligations no matter the personal cost, and they are baffled by people who don’t hold their own word in the same respect. Combining laziness and dishonesty is the quickest way to get on ISTJs’ bad side. Consequently, people with the ISTJ personality type often prefer to work alone, or at least have their authority clearly established by hierarchy, where they can set and achieve their goals without debate or worry over other’s reliability.</p>
+            <p>ISTJs have sharp, fact-based minds, and prefer autonomy and self-sufficiency to reliance on someone or something. Dependency on others is often seen by ISTJs as a weakness, and their passion for duty, dependability and impeccable personal integrity forbid falling into such a trap.</p>
+            <p>This sense of personal integrity is core to ISTJs, and goes beyond their own minds – ISTJ personalities adhere to established rules and guidelines regardless of cost, reporting their own mistakes and telling the truth even when the consequences for doing so could be disastrous. To ISTJs, honesty is far more important than emotional considerations, and their blunt approach leaves others with the false impression that ISTJs are cold, or even robotic. People with this type may struggle to express emotion or affection outwardly, but the suggestion that they don’t feel, or worse have no personality at all, is deeply hurtful.</p>
+            <h2>...For It Is Better to Be Alone Than in Bad Company</h2>
+            <p>ISTJs’ dedication is an excellent quality, allowing them to accomplish much, but it is also a core weakness that less scrupulous individuals take advantage of. ISTJs seek stability and security, considering it their duty to maintain a smooth operation, and they may find that their coworkers and significant others shift their responsibilities onto them, knowing that they will always take up the slack. ISTJs tend to keep their opinions to themselves and let the facts do the talking, but it can be a long time before observable evidence tells the whole story.</p>
+            <p>ISTJs need to remember to take care of themselves – their stubborn dedication to stability and efficiency can compromise those goals in the long term as others lean ever-harder on them, creating an emotional strain that can go unexpressed for years, only finally coming out after it’s too late to fix. If they can find coworkers and spouses who genuinely appreciate and complement their qualities, who enjoy the brightness, clarity and dependability that they offer, ISTJs will find that their stabilizing role is a tremendously satisfying one, knowing that they are part of a system that works.</p>
+        </div>
+        <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+    </div>
+<div>
+<script>
+// back to top button
+$(document).ready(function(){
+     $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
+        });
+        // scroll body to 0px on click
+        $('#back-to-top').click(function () {
+            $('#back-to-top').tooltip('hide');
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+        
+        $('#back-to-top').tooltip('show');
+
+});
+// ajax
+$(document).ready(function(){
+    $('#leftmenu').change(function(){
+        var option = $(this).find('aside:a').val();
+        if(option == 'istj_weakness')
+        {
+            $.ajax({ url: "istj_weakness.php", success:function (result){
+                $("#rightmenu").html(result);
+            }});
+        }
+        else if (option == 'istj_romantic')
+        {
+            $.ajax({ url: "istj_romantic.php", success:function (result){
+                $("#rightmenu").html(result);
+            }});
+        }
+        else
+        {
+            $.ajax({ url: "istj_career.php", success:function (result){
+                $("#rightmenu").html(result);
+            }});
+        }
+    });
+});
+</script>
+</body>
+</html>
